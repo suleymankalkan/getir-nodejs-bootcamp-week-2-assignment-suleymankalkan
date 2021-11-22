@@ -1,30 +1,38 @@
 const http = require('http');
-const fs = require('fs');
+const logger = require('./logger')
 
-//Server Port
+// Port & Log file
 const PORT = 3000;
+const LOGFILE = "./sunucu.log";
 
 const handleRequest = (req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/html'}); // http header
-
+  const logDate = Date.now()
   const url = req.url;
-
+  let message;
+  let responseCode = 200;
+  
   switch(url) {
     case "/":
-      res.end(`Hi! You are on the main page. (${url})`);
+      message = `Hi! You are on the main page. (${url})`;
       break;
     case "/about":
-      res.end(`Hi! You are on the about page. (${url})`);
+      message = `Hi! You are on the about page. (${url})`;
       break;
     case "/contact":
-      res.end(`Hi! You are on the contact page. (${url})`);
+      message = `Hi! You are on the contact page. (${url})`;
+      break;
+    case "/getir":
+      message = `Hi! You are on the getir page. (${url})`;
       break;
     default:
-      res.writeHead(404, {'Content-Type': 'text/html'}); // Change response code to 404
-      res.end("Oops! The page you are looking for is not exist. 404")
+      responseCode = 404;
+      message = `Oops! The page you are looking for is not exist. 404`;
   }
 
-  
+  res.writeHead(responseCode, {'Content-Type': 'text/html'}); // Setting the http header
+  res.end(message); // Sending response
+  logger(LOGFILE, req, res, logDate); // Logging the request to log file
+
 }
 
 const server = http.createServer(handleRequest);
