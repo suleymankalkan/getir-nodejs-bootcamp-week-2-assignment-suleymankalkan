@@ -1,0 +1,22 @@
+{
+  "name": "getir-nodejs-bootcamp-week-2-assignment-suleymankalkan",
+  "version": "1.0.0",
+  "description": "Getir NodeJS Bootcamp Week 2 Assigment",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getir-nodejs-bootcamp/getir-nodejs-bootcamp-week-2-assignment-suleymankalkan.git"
+  },
+  "author": "Suleyman Kalkan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getir-nodejs-bootcamp/getir-nodejs-bootcamp-week-2-assignment-suleymankalkan/issues"
+  },
+  "homepage": "https://github.com/getir-nodejs-bootcamp/getir-nodejs-bootcamp-week-2-assignment-suleymankalkan#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
